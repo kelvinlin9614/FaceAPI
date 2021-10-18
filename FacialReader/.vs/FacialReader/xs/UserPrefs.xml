@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{63873B5E-2638-4A8D-A7E4-8EF32208AF8C}|Default">
+  <MonoDevelop.Ide.ItemProperties.FacialReader PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FacialReader/FaceAPI.cs">
+    <Files>
+      <File FileName="FacialReader/FaceAPI.cs" Line="34" Column="46" />
+      <File FileName="FacialReader/FacialReader.csproj" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FacialReader" expanded="True">
+            <Node name="FacialReader" expanded="True">
+              <Node name="FaceAPI.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

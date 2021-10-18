@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\FacialReader\\FacialReader\\FacialReader.csproj": {}
+    "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/FacialReader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\FacialReader\\FacialReader\\FacialReader.csproj": {
+    "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/FacialReader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\FacialReader\\FacialReader\\FacialReader.csproj",
+        "projectUniqueName": "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/FacialReader.csproj",
         "projectName": "FacialReader",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\FacialReader\\FacialReader\\FacialReader.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\FacialReader\\FacialReader\\obj\\",
+        "projectPath": "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/FacialReader.csproj",
+        "packagesPath": "/Users/kevinlin/.nuget/packages/",
+        "outputPath": "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/kevinlin/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }
