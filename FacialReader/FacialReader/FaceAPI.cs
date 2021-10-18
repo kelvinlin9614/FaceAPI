@@ -9,43 +9,30 @@ namespace FacialReader
 {
     class FaceAPI
     {
-
-        // Sets the read-only value of a file.
-        public static void SetFileReadAccess(string FileName, bool SetReadOnly)
-        {
-            // Create a new FileInfo object.
-            FileInfo fInfo = new FileInfo(FileName);
-
-            // Set the IsReadOnly property.
-            fInfo.IsReadOnly = SetReadOnly;
-        }
-
         /*
          * Function: convert a video to frames(extract every second thumbnails)
          * Store all the pictures into the image array
          * Return Image array
          */
-        public static Image[] ConvertVideoToFrames(Image[] mn, string videoDir, string outDir)
+        public static Image[] ConvertVideoToFrames(Image[] mn, string currentDir, string videoFileName, string newDir)
         {
-            //SetFileReadAccess(videoDir, true);
-            var inputFile = new MediaFile { Filename = @videoDir };
-            Console.WriteLine("IM here!");
-
+            // create a new directory(will store all the picture into it)
+            DirectoryInfo di = Directory.CreateDirectory(currentDir + newDir);
+            var inputFile = new MediaFile { Filename = currentDir + videoFileName};
             using (var engine = new Engine())
             {
-                Console.WriteLine("IM here!");
                 engine.GetMetadata(inputFile);
                 // get the total length of the video(seconds)
                 double duration = inputFile.Metadata.Duration.TotalSeconds;
-
                 // extract every second thumbnail, store all the thumbnails into specific dir
                 // store all the thumbnails into the Image array.
                 for (int i = 0; i < duration; i++)
                 {
                     var options = new ConversionOptions { Seek = TimeSpan.FromSeconds(i) };
-                    var outputFile = new MediaFile { Filename = @outDir + i.ToString() + ".jpg" };
+                    var outputFile = new MediaFile { Filename = currentDir + newDir + @"\" + i.ToString() + ".jpg" };
+                    Console.WriteLine("Generating " + currentDir + newDir + @"\" + i.ToString() + ".jpg");
                     engine.GetThumbnail(inputFile, outputFile, options);
-                    mn[i] = Image.FromFile(@outDir + i.ToString() + ".jpg");
+                    mn[i] = Image.FromFile(currentDir + newDir + @"\" + i.ToString() + ".jpg");
                 }
             }
             return mn;
@@ -61,14 +48,15 @@ namespace FacialReader
 
         public static void Main(string[] args)
         {
-            //Console.WriteLine("Enter Video Directory: ");
-            //string videoDir = Console.ReadLine();
-            var videoDir = "Users/kevinlin/Desktop/happy.mp4";
-            //Console.WriteLine("Enter Output Directory: ");
-            //string outDir = Console.ReadLine();
-            var outDir = "Users/kevinlin/Desktop/FaceApi/";
+            // obtain current directory
+            string currentDir = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine("Please copy your video into this directory: " + currentDir);
+            Console.WriteLine("Enter Video File Name: ");
+            string videoName = Console.ReadLine();
+            Console.WriteLine("Enter a directory name(Pictures will store in this directory)");
+            string newDir = Console.ReadLine();
             Image[] mn = new Image[1000];
-            mn = ConvertVideoToFrames(mn, videoDir, outDir);
+            mn = ConvertVideoToFrames(mn, currentDir, videoName, newDir);
         }
     }
 }

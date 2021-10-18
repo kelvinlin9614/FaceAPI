@@ -496,24 +496,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/kevinlin/.nuget/packages/": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/FacialReader.csproj",
+      "projectUniqueName": "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj",
       "projectName": "FacialReader",
-      "projectPath": "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/FacialReader.csproj",
-      "packagesPath": "/Users/kevinlin/.nuget/packages/",
-      "outputPath": "/Users/kevinlin/Documents/GitHub/FaceAPI/FacialReader/FacialReader/obj/",
+      "projectPath": "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/kevinlin/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -556,11 +558,17 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",
