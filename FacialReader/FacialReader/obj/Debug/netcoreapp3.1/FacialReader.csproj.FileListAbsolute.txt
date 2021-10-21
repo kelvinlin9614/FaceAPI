@@ -94,3 +94,5 @@ C:\GitHub\FaceAPI\FacialReader\FacialReader\obj\Debug\netcoreapp3.1\FacialReader
 C:\GitHub\FaceAPI\FacialReader\FacialReader\obj\Debug\netcoreapp3.1\FacialReader.dll
 C:\GitHub\FaceAPI\FacialReader\FacialReader\obj\Debug\netcoreapp3.1\FacialReader.pdb
 C:\GitHub\FaceAPI\FacialReader\FacialReader\obj\Debug\netcoreapp3.1\FacialReader.genruntimeconfig.cache
+C:\Users\M\Documents\School\CS 4800-01 Software Engineering\FaceAPI\FacialReader\FacialReader\obj\Debug\netcoreapp3.1\FacialReader.dll
+C:\Users\M\Documents\School\CS 4800-01 Software Engineering\FaceAPI\FacialReader\FacialReader\obj\Debug\netcoreapp3.1\FacialReader.pdb

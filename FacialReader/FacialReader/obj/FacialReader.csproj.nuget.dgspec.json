@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj": {}
+    "C:\\Users\\M\\Documents\\School\\CS 4800-01 Software Engineering\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj": {
+    "C:\\Users\\M\\Documents\\School\\CS 4800-01 Software Engineering\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj",
+        "projectUniqueName": "C:\\Users\\M\\Documents\\School\\CS 4800-01 Software Engineering\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj",
         "projectName": "FacialReader",
-        "projectPath": "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\FaceAPI\\FacialReader\\FacialReader\\obj\\",
+        "projectPath": "C:\\Users\\M\\Documents\\School\\CS 4800-01 Software Engineering\\FaceAPI\\FacialReader\\FacialReader\\FacialReader.csproj",
+        "packagesPath": "C:\\Users\\M\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\M\\Documents\\School\\CS 4800-01 Software Engineering\\FaceAPI\\FacialReader\\FacialReader\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\M\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +48,10 @@
               "target": "Package",
               "version": "[1.1.0.1, )"
             },
+            "Microsoft.Azure.CognitiveServices.Vision.Face": {
+              "target": "Package",
+              "version": "[2.8.0-preview.1, )"
+            },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -64,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
