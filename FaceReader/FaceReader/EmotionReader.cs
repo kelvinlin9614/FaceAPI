@@ -87,7 +87,7 @@ namespace FaceReader
         }
 
 
-        public static async Task DeletePersonGroup(IFaceClient client, String personGroupId)
+        public static async Task DeletePersonGroup(IFaceClient client, string personGroupId)
         {
             await client.PersonGroup.DeleteAsync(personGroupId);
             Console.WriteLine($"Deleted the person group {personGroupId}.");
