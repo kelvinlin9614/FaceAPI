@@ -25,8 +25,9 @@ namespace FaceReader
             string videoName = Console.ReadLine();
             Console.WriteLine("Enter a directory name(Pictures will store in this directory)");
             string newDir = Console.ReadLine();
-            Image[] mn = new Image[1000];
-            mn = VideoToImage.ConvertVideoToFrames(mn, currentDir, videoName, newDir);
+            Stream[] mn = new Stream[1000];
+            VideoToImage obj = new VideoToImage();
+            mn = obj.VideoToStreams(currentDir, videoName, newDir);
         }
     }
 }

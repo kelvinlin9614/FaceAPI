@@ -9,14 +9,21 @@ namespace FaceReader
 {
     class VideoToImage
     {
+        private int imageCount = 0;
         /*
          * Function: convert a video to frames(extract every second thumbnails)
          * Store all the pictures into the image array
          * Return Image array
          */
-        public static Image[] ConvertVideoToFrames(Image[] mn, string currentDir, string videoFileName, string newDir)
+        public Stream[] VideoToStreams(string currentDir, string videoFileName, string newDir)
+        {
+            ConvertVideoToFrames(currentDir, videoFileName, newDir);
+            return ConvertFrameToStreams(newDir);
+        }
+        public Image[] ConvertVideoToFrames(string currentDir, string videoFileName, string newDir)
         {
             // create a new directory(will store all the picture into it)
+            Image[] mn = new Image[1000];
             DirectoryInfo di = Directory.CreateDirectory(currentDir + newDir);
             var inputFile = new MediaFile { Filename = currentDir + videoFileName};
             using (var engine = new Engine())
@@ -33,11 +40,24 @@ namespace FaceReader
                     Console.WriteLine("Generating " + currentDir + newDir + @"\" + i.ToString() + ".jpg");
                     engine.GetThumbnail(inputFile, outputFile, options);
                     mn[i] = Image.FromFile(currentDir + newDir + @"\" + i.ToString() + ".jpg");
+                    imageCount = i;
                 }
             }
             return mn;
         }
+        public Stream[] ConvertFrameToStreams(string currentDir)
+        {
+            // create a new directory(will store all the picture into it)
+            Stream[] mn = new Stream[1000];
+            Image[] inputFile = new Image[imageCount];
+            for (int i = 0; i <= imageCount; i++)
+            {
+                inputFile[i] = Image.FromFile(currentDir + i.ToString() + ".jpg");
+                mn[i].Write(ImageToByteArray(inputFile[i]), 0, ImageToByteArray(inputFile[i]).Length);
+            }
 
+            return mn;
+        }
         // Function: convert a image to byte array
         public static byte[] ImageToByteArray(Image x)
         {
