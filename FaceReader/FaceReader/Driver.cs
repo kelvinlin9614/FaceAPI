@@ -18,7 +18,7 @@ namespace FaceReader
     {
         public static void Main(string[] args)
         {
-            // obtain current directory
+            // obtain current directory(base directory)
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine("Please copy your video into this directory: " + baseDir);
             Console.WriteLine("Enter Video File Name: ");
