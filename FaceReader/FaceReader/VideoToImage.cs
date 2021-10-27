@@ -40,6 +40,7 @@ namespace FaceReader
                     Console.WriteLine("Generating " + baseDir + picDirName + @"\" + i.ToString() + ".jpg");
                     engine.GetThumbnail(inputFile, outputFile, options);
                     //mn[i] = Image.FromFile(baseDir + picDirName + @"\" + i.ToString() + ".jpg");
+                    
                     imageCount = i;
                 }
             }
