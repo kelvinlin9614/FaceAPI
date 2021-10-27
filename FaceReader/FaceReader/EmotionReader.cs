@@ -11,8 +11,27 @@ namespace FaceReader
 {
     class EmotionReader
     {
-        const string SUBSCRIPTION_KEY = "257176d0-727a-4831-8360-c43b80260aa1";
-        const string ENDPOINT = "7a3a8212c72642b5a7b6156cdd13db1c";
+        private string SUBSCRIPTION_KEY;
+        private string ENDPOINT;
+        private IFaceClient client;
+        private string RECOGNITION_MODEL4;
+        public EmotionReader()
+        {
+            this.SUBSCRIPTION_KEY = "257176d0-727a-4831-8360-c43b80260aa1";
+            this.ENDPOINT = "7a3a8212c72642b5a7b6156cdd13db1c";
+            this.client = Authenticate(this.ENDPOINT, this.SUBSCRIPTION_KEY);
+            this.RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
+        }
+
+        public IFaceClient getFaceClient()
+        {
+            return this.client;
+        }
+
+        public string getRecognitionModel()
+        {
+            return this.RECOGNITION_MODEL4;
+        }
         // </snippet_creds>
         /**
         public static void Main(string[] args)
@@ -30,43 +49,32 @@ namespace FaceReader
 
         }*/
 
-
-        public static IFaceClient Authenticate(string endpoint, string key)
+        public IFaceClient Authenticate(string endpoint, string key)
         {
             return new FaceClient(new ApiKeyServiceClientCredentials(key)) { Endpoint = endpoint };
         }
 
-        public static async Task DetectFaceExtract(IFaceClient client, Stream url, string recognitionModel)
+        public async Task DetectFaceExtract(IFaceClient client, Stream []mn, string recognitionModel)
         {
-
-            // Create a list of images
-            List<string> imageFileNames = new List<string>
+            IList<DetectedFace> detectedFaces;
+            // Detect faces with all attributes from stream.
+            for(int i = 0; i < mn.Length; i++)
             {
-                //image names 
-            };
-
-            foreach (var imageFileName in imageFileNames)
-            {
-                IList<DetectedFace> detectedFaces;
-
-                // Detect faces with all attributes from image url.
-                detectedFaces = await client.Face.DetectWithUrlAsync($"{url}{imageFileName}",
-                        returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
+                detectedFaces = await client.Face.DetectWithStreamAsync(mn[i],
+                    returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
                         FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
                         FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
                         FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile },
                         // We specify detection model 1 because we are retrieving attributes.
                         detectionModel: DetectionModel.Detection01,
                         recognitionModel: recognitionModel);
-
-                Console.WriteLine($"{detectedFaces.Count} face(s) detected from image `{imageFileName}`.");
+                Console.WriteLine($"{detectedFaces.Count} face(s) detected from image '{i}'.");
 
                 foreach (var face in detectedFaces)
                 {
-
                     // Get bounding box of the faces
-                    Console.WriteLine($"Rectangle(Left/Top/Width/Height) : {face.FaceRectangle.Left} {face.FaceRectangle.Top} {face.FaceRectangle.Width} {face.FaceRectangle.Height}");
-
+                    Console.WriteLine($"Rectangle(Left/Top/Width/Height) : " +
+                        $"{face.FaceRectangle.Left} {face.FaceRectangle.Top} {face.FaceRectangle.Width} {face.FaceRectangle.Height}");
                     // Get emotion on the face
                     string emotionType = string.Empty;
                     double emotionValue = 0.0;
@@ -80,14 +88,13 @@ namespace FaceReader
                     if (emotion.Sadness > emotionValue) { emotionValue = emotion.Sadness; emotionType = "Sadness"; }
                     if (emotion.Surprise > emotionValue) { emotionType = "Surprise"; }
                     Console.WriteLine($"Emotion : {emotionType}");
-
                     Console.WriteLine();
                 }
             }
         }
 
 
-        public static async Task DeletePersonGroup(IFaceClient client, string personGroupId)
+        public async Task DeletePersonGroup(IFaceClient client, string personGroupId)
         {
             await client.PersonGroup.DeleteAsync(personGroupId);
             Console.WriteLine($"Deleted the person group {personGroupId}.");

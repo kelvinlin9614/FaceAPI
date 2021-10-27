@@ -33,3 +33,39 @@ C:\Users\M\Documents\School\CS 4800-01 Software Engineering\FaceAPI\FaceReader\F
 C:\Users\M\Documents\School\CS 4800-01 Software Engineering\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.dll
 C:\Users\M\Documents\School\CS 4800-01 Software Engineering\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.pdb
 C:\Users\M\Documents\School\CS 4800-01 Software Engineering\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.genruntimeconfig.cache
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\FaceReader.exe
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\FaceReader.deps.json
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\FaceReader.runtimeconfig.json
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\FaceReader.runtimeconfig.dev.json
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\FaceReader.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\FaceReader.pdb
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\MediaToolkit.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\Microsoft.Azure.CognitiveServices.Vision.Face.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.csproj.AssemblyReference.cache
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.AssemblyInfoInputs.cache
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.AssemblyInfo.cs
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.csproj.CoreCompileInputs.cache
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.csproj.CopyComplete
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.dll
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.pdb
+C:\GitHub\FaceAPI\FaceReader\FaceReader\obj\Debug\netcoreapp3.1\FaceReader.genruntimeconfig.cache
