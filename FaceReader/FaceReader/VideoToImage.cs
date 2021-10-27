@@ -25,7 +25,7 @@ namespace FaceReader
             // create a new directory(will store all the picture into it)
             Image[] mn = new Image[1000];
             DirectoryInfo di = Directory.CreateDirectory(currentDir + newDir);
-            var inputFile = new MediaFile { Filename = currentDir + videoFileName};
+            var inputFile = new MediaFile { Filename = currentDir + videoFileName}; 
             using (var engine = new Engine())
             {
                 engine.GetMetadata(inputFile);
@@ -36,10 +36,16 @@ namespace FaceReader
                 for (int i = 0; i < duration; i++)
                 {
                     var options = new ConversionOptions { Seek = TimeSpan.FromSeconds(i) };
+                    
+                    //I think currentDir should be reomved 
                     var outputFile = new MediaFile { Filename = currentDir + newDir + @"\" + i.ToString() + ".jpg" };
-                    Console.WriteLine("Generating " + currentDir + newDir + @"\" + i.ToString() + ".jpg");
+                    Console.WriteLine(currentDir + newDir + @"\" + i.ToString() + ".jpg");
+                    
                     engine.GetThumbnail(inputFile, outputFile, options);
+                    
+                    //I think currentDir should be removed 
                     mn[i] = Image.FromFile(currentDir + newDir + @"\" + i.ToString() + ".jpg");
+                    
                     imageCount = i;
                 }
             }
