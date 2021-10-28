@@ -19,17 +19,27 @@ namespace FaceReader
         public static void Main(string[] args)
         {
             // obtain current directory(base directory)
+
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            Console.WriteLine("Please copy your video into this directory: " + baseDir);
-            Console.WriteLine("Enter Video File Name: ");
-            string videoName = Console.ReadLine();
-            Console.WriteLine("Enter a directory name(Pictures will store in this directory)");
-            string picDirName = Console.ReadLine();
-            Stream[] mn = new Stream[1000];
+            //Console.WriteLine("Please copy your video into this directory: " + baseDir);
+            //Console.WriteLine("Enter Video File Name: ");
+            //string videoName = Console.ReadLine();
+            //Console.WriteLine("Enter a directory name(Pictures will store in this directory)");
+            //string picDirName = Console.ReadLine();
+
+            //Video to Stream
+
+            Stream[] mn = new Stream[1];
             var obj = new VideoToImage();
-            mn = obj.VideoToStreams(baseDir, videoName, picDirName);
+            //mn = obj.VideoToStreams(baseDir, videoName, picDirName);
+            Image test = Image.FromFile("happyFace.jpg");
+            mn[0] = obj.ImageToStream(test);
+
+            ////Emotion Reader
             EmotionReader emotion = new EmotionReader();
             emotion.DetectFaceExtract(emotion.getFaceClient(), mn, emotion.getRecognitionModel()).Wait();
+
+
         }
     }
 }

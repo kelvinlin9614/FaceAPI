@@ -19,6 +19,7 @@ namespace FaceReader
         {
             this.SUBSCRIPTION_KEY = "257176d0-727a-4831-8360-c43b80260aa1";
             this.ENDPOINT = "7a3a8212c72642b5a7b6156cdd13db1c";
+            //this.ENDPOINT = "https://randomname.cognitiveservices.azure.com/";
             this.client = Authenticate(this.ENDPOINT, this.SUBSCRIPTION_KEY);
             this.RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
         }
@@ -60,14 +61,18 @@ namespace FaceReader
             // Detect faces with all attributes from stream.
             for(int i = 0; i < mn.Length; i++)
             {
-                detectedFaces = await client.Face.DetectWithStreamAsync(mn[i],
-                    returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
-                        FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
-                        FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
-                        FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile },
-                        // We specify detection model 1 because we are retrieving attributes.
-                        detectionModel: DetectionModel.Detection01,
-                        recognitionModel: recognitionModel);
+            //detectedFaces = await client.Face.DetectWithStreamAsync(mn[i],
+            //returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
+            //            FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
+            //            FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
+            //            FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile },
+            //            // We specify detection model 1 because we are retrieving attributes.
+            //            detectionModel: DetectionModel.Detection01,
+            //            recognitionModel: recognitionModel);
+                detectedFaces = await client.Face.DetectWithStreamAsync(mn[i],true,false, returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
+                            FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
+                            FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
+                            FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile }, recognitionModel,true,DetectionModel.Detection01);
                 Console.WriteLine($"{detectedFaces.Count} face(s) detected from image '{i}'.");
 
                 foreach (var face in detectedFaces)

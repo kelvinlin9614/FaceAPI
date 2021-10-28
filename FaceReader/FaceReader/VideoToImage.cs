@@ -50,6 +50,12 @@ namespace FaceReader
             byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
             return xByte;
         }
+        public Stream ImageToStream(Image x)
+        {
+            Stream s = new MemoryStream();
+            s.Write(ImageToByteArray(x),0,ImageToByteArray(x).Length);
+            return s;
+        }
         public Stream[] ConvertFrameToStreams(string picDir)
         {
             // create a new directory(will store all the picture into it)
