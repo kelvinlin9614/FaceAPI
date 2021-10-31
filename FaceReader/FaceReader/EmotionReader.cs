@@ -11,72 +11,49 @@ namespace FaceReader
 {
     class EmotionReader
     {
+        private string personGroupId;
         private string SUBSCRIPTION_KEY;
         private string ENDPOINT;
         private IFaceClient client;
         private string RECOGNITION_MODEL4;
+       
         public EmotionReader()
         {
-            this.SUBSCRIPTION_KEY = "257176d0-727a-4831-8360-c43b80260aa1";
-            this.ENDPOINT = "7a3a8212c72642b5a7b6156cdd13db1c";
-            //this.ENDPOINT = "https://randomname.cognitiveservices.azure.com/";
+            this.personGroupId = Guid.NewGuid().ToString();
+            this.SUBSCRIPTION_KEY = "7a3a8212c72642b5a7b6156cdd13db1c";
+            this.ENDPOINT = "https://randomname.cognitiveservices.azure.com/";
             this.client = Authenticate(this.ENDPOINT, this.SUBSCRIPTION_KEY);
             this.RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
         }
 
-        public IFaceClient getFaceClient()
-        {
-            return this.client;
-        }
-
-        public string getRecognitionModel()
-        {
-            return this.RECOGNITION_MODEL4;
-        }
-        // </snippet_creds>
-        /**
-        public static void Main(string[] args)
-        {
-
-            const string RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
-
-            IFaceClient client = Authenticate(ENDPOINT, SUBSCRIPTION_KEY);
-
-            byte[] imageBytes = File.ReadAllBytes(@"C:\FaceAPI\pic\imageName.jpg");
-            Stream stream = new MemoryStream(imageBytes);
-
-            //save the image as stream and pass it as an argument 
-            DetectFaceExtract(client, stream, RECOGNITION_MODEL4).Wait();
-
-        }*/
-
-        public IFaceClient Authenticate(string endpoint, string key)
+        private IFaceClient Authenticate(string endpoint, string key)
         {
             return new FaceClient(new ApiKeyServiceClientCredentials(key)) { Endpoint = endpoint };
         }
 
-        public async Task DetectFaceExtract(IFaceClient client, Stream []mn, string recognitionModel)
+        public async Task DetectFaceExtract(Stream[] imageStream)
         {
-            IList<DetectedFace> detectedFaces;
-            // Detect faces with all attributes from stream.
-            for(int i = 0; i < mn.Length; i++)
+            Console.WriteLine("========DETECT FACES========");
+            Console.WriteLine();
+            
+            for (int i = 0; i < imageStream.Length; i++)
             {
-            //detectedFaces = await client.Face.DetectWithStreamAsync(mn[i],
-            //returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
-            //            FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
-            //            FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
-            //            FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile },
-            //            // We specify detection model 1 because we are retrieving attributes.
-            //            detectionModel: DetectionModel.Detection01,
-            //            recognitionModel: recognitionModel);
-                detectedFaces = await client.Face.DetectWithStreamAsync(mn[i],true,false, returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
-                            FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
-                            FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
-                            FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile }, recognitionModel,true,DetectionModel.Detection01);
-                Console.WriteLine($"{detectedFaces.Count} face(s) detected from image '{i}'.");
+                IList<DetectedFace> detectedFaces;
+                // Detect faces with all attributes from image stream.
+                detectedFaces = await this.client.Face.DetectWithStreamAsync(imageStream[i],
+                    returnFaceAttributes: new List<FaceAttributeType> { FaceAttributeType.Accessories, FaceAttributeType.Age,
+                    FaceAttributeType.Blur, FaceAttributeType.Emotion, FaceAttributeType.Exposure, FaceAttributeType.FacialHair,
+                    FaceAttributeType.Gender, FaceAttributeType.Glasses, FaceAttributeType.Hair, FaceAttributeType.HeadPose,
+                    FaceAttributeType.Makeup, FaceAttributeType.Noise, FaceAttributeType.Occlusion, FaceAttributeType.Smile },
+                    // We specify detection model 1 because we are retrieving attributes.
+                    detectionModel: DetectionModel.Detection01,
+                    recognitionModel: this.RECOGNITION_MODEL4);
+                Console.WriteLine($"{detectedFaces.Count} face(s) detected from {i}.jpg.");
 
+                // Parse and print all attributes of each detected face.
                 foreach (var face in detectedFaces)
                 {
+                    Console.WriteLine($"Face attributes for {i}.jpg:");
                     // Get bounding box of the faces
                     Console.WriteLine($"Rectangle(Left/Top/Width/Height) : " +
                         $"{face.FaceRectangle.Left} {face.FaceRectangle.Top} {face.FaceRectangle.Width} {face.FaceRectangle.Height}");
@@ -98,8 +75,7 @@ namespace FaceReader
             }
         }
 
-
-        public async Task DeletePersonGroup(IFaceClient client, string personGroupId)
+        public async Task DeletePersonGroup(string personGroupId)
         {
             await client.PersonGroup.DeleteAsync(personGroupId);
             Console.WriteLine($"Deleted the person group {personGroupId}.");

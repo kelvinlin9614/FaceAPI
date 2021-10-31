@@ -9,7 +9,7 @@ namespace FaceReader
 {
     class VideoToImage
     {
-        private int imageCount = 0;
+        private int imageCount = 0;       // store how many images we have
         /*
          * Function: convert a video to frames(extract every second thumbnails)
          * Store all the pictures into the image array
@@ -18,57 +18,55 @@ namespace FaceReader
         public Stream[] VideoToStreams(string baseDir, string videoName, string picDirName)
         {
             ConvertVideoToFrames(baseDir, videoName, picDirName);
-            return ConvertFrameToStreams(baseDir + picDirName);
+            return ConvertFramesToStreams(baseDir + picDirName);
         }
-        public void ConvertVideoToFrames(string baseDir, string videoName, string picDirName)
+
+        // convert video to frames, store all the frames to local directory, return the number of total frames
+        private void ConvertVideoToFrames(string baseDir, string videoName, string picDirName)
         {
-            // Image[] mn = new Image[1000];
-            // create a new directory(will store all the picture into it)
-            DirectoryInfo di = Directory.CreateDirectory(baseDir + picDirName);
-            var inputFile = new MediaFile { Filename = baseDir + videoName};
-            using (var engine = new Engine())
+            MediaFile inputFile = new MediaFile { Filename = baseDir + videoName };
+            
+            // if the directory does not exist, then create a new directory
+            if (!Directory.Exists(baseDir + picDirName))
             {
+                // create a new directory(will store all the picture into it)
+                Directory.CreateDirectory(baseDir + picDirName);
+            }
+            using (Engine engine = new Engine())
+            {
+                // get meta data from the video
                 engine.GetMetadata(inputFile);
                 // get the total length of the video(seconds)
                 double duration = inputFile.Metadata.Duration.TotalSeconds;
-                // extract every second thumbnail, store all the thumbnails into specific dir
-                for (int i = 0; i < duration; i++)
-                {
+                // extract every 4 second thumbnail, store all the thumbnails into specific directory
+                for (int i = 0; i < duration; i+=4)
+                { 
                     var options = new ConversionOptions { Seek = TimeSpan.FromSeconds(i) };
-                    var outputFile = new MediaFile { Filename = baseDir + picDirName + @"\" + i.ToString() + ".jpg" };
-                    Console.WriteLine("Generating " + baseDir + picDirName + @"\" + i.ToString() + ".jpg");
+                    var outputFile = new MediaFile { Filename = baseDir + picDirName + @"\" + imageCount.ToString() + ".jpg" };
+                    Console.WriteLine("Generating " + baseDir + picDirName + @"\" + imageCount.ToString() + ".jpg");
                     engine.GetThumbnail(inputFile, outputFile, options);
-                    //mn[i] = Image.FromFile(baseDir + picDirName + @"\" + i.ToString() + ".jpg");
-                    imageCount = i;
+                    imageCount++;
                 }
             }
         }
-        // Function: convert a image to byte array
-        public byte[] ImageToByteArray(Image x)
+
+        // use filestream to read each frame and store them to stream array, return stream array
+        private Stream[] ConvertFramesToStreams(string picDir)
         {
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
-            return xByte;
-        }
-        public Stream ImageToStream(Image x)
-        {
-            Stream s = new MemoryStream();
-            s.Write(ImageToByteArray(x),0,ImageToByteArray(x).Length);
-            return s;
-        }
-        public Stream[] ConvertFrameToStreams(string picDir)
-        {
-            // create a new directory(will store all the picture into it)
-            Stream[] mn = new Stream[1000];
-            var inputFile = new Image[imageCount];
-            Console.WriteLine(imageCount);
+            FileStream[] fs = new FileStream[this.imageCount];
             for (int i = 0; i < imageCount; i++)
             {
-                inputFile[i] = Image.FromFile(picDir + @"\" +  i.ToString() + ".jpg");
-                mn[i] = new MemoryStream();
-                mn[i].Write(ImageToByteArray(inputFile[i]), 0, ImageToByteArray(inputFile[i]).Length);
+                fs[i] = File.OpenRead(picDir + @"\" + i.ToString() + ".jpg");
             }
-            return mn;
+            return fs;
         }
+
+        //// Function: convert a image to byte array
+        //public byte[] ImageToByteArray(Image x)
+        //{
+        //    ImageConverter _imageConverter = new ImageConverter();
+        //    byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
+        //    return xByte;
+        //}
     }
 }
