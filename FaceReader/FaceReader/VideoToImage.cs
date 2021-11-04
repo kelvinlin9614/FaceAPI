@@ -60,13 +60,5 @@ namespace FaceReader
             }
             return fs;
         }
-
-        //// Function: convert a image to byte array
-        //public byte[] ImageToByteArray(Image x)
-        //{
-        //    ImageConverter _imageConverter = new ImageConverter();
-        //    byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
-        //    return xByte;
-        //}
     }
 }

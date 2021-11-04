@@ -11,7 +11,6 @@ namespace FaceReader
 {
     class EmotionReader
     {
-        private string personGroupId;
         private string SUBSCRIPTION_KEY;
         private string ENDPOINT;
         private IFaceClient client;
@@ -19,7 +18,6 @@ namespace FaceReader
        
         public EmotionReader()
         {
-            this.personGroupId = Guid.NewGuid().ToString();
             this.SUBSCRIPTION_KEY = "7a3a8212c72642b5a7b6156cdd13db1c";
             this.ENDPOINT = "https://randomname.cognitiveservices.azure.com/";
             this.client = Authenticate(this.ENDPOINT, this.SUBSCRIPTION_KEY);
@@ -33,6 +31,8 @@ namespace FaceReader
 
         public async Task DetectFaceExtract(Stream[] imageStream)
         {
+            int anger, contempt, disgust, fear, happiness, neutral, sadness, surprise;
+            anger = contempt = disgust = fear = happiness = neutral = sadness = surprise = 0;
             Console.WriteLine("========DETECT FACES========");
             Console.WriteLine();
             
@@ -71,17 +71,41 @@ namespace FaceReader
                     if (emotion.Surprise > emotionValue) { emotionType = "Surprise"; }
                     Console.WriteLine($"Emotion : {emotionType}");
                     Console.WriteLine();
+                    switch (emotionType)
+                    {
+                        case "Anger":
+                            anger++;
+                            break;
+                        case "Contempt":
+                            contempt++;
+                            break;
+                        case "Disgust":
+                            disgust++;
+                            break;
+                        case "Fear":
+                            fear++;
+                            break;
+                        case "Happiness":
+                            happiness++;
+                            break;
+                        case "Neutral":
+                            neutral++;
+                            break;
+                        case "Sadness":
+                            sadness++;
+                            break;
+                        case "Surprise":
+                            surprise++;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
+            Console.WriteLine("===========================");
+            Console.WriteLine($"Anger: {anger} Contempt: {contempt} Disgust: {disgust} Fear: {fear}");
+            Console.WriteLine($"Happiness: {happiness} Neutral: {neutral} Sadness: {sadness} Surprise: {surprise}");
+            Console.WriteLine("===========================");
         }
-
-        public async Task DeletePersonGroup(string personGroupId)
-        {
-            await client.PersonGroup.DeleteAsync(personGroupId);
-            Console.WriteLine($"Deleted the person group {personGroupId}.");
-        }
-        /*
-		 * END - DELETE PERSON GROUP
-		 */
     }
 }
