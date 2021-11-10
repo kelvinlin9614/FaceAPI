@@ -31,7 +31,7 @@ namespace FaceReader
         }
 
         //get the most occuring element 
-        private int findMostOccuringElement(int[] array, Hashtable hs)
+        private int FindMostOccuringElement(int[] array, Hashtable hs)
         {
             int mostCommon = array[0];
             int occurance = 0;
@@ -97,7 +97,7 @@ namespace FaceReader
         }
 
         //get the mood type 
-        private string moodType(int emotionLevel)
+        private string MoodType(int emotionLevel)
         {
             if (emotionLevel == 1)
             {
@@ -148,11 +148,11 @@ namespace FaceReader
 
             Hashtable hs = new Hashtable();
             //get the average emotion of all the images 
-            int mood = findMostOccuringElement(imageMoods, hs);
+            int mood = FindMostOccuringElement(imageMoods, hs);
             Console.WriteLine();
             //print the average emotion of all the images 
             Console.WriteLine("===========================");
-            Console.WriteLine("The most occuring emotion: " + moodType(mood));
+            Console.WriteLine("The most occuring emotion: " + MoodType(mood));
             Console.WriteLine("===========================");
             Console.WriteLine();
         }
