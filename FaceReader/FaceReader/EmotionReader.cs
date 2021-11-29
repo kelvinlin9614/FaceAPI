@@ -74,7 +74,7 @@ namespace FaceReader
         //get integer value for the given emotions 
         private int GetReplyText(string emotion)
         {
-            if (emotion == "Surprise" || emotion == "Happiness")
+            if (emotion == "Surprise" || emotion == "Happiness" || emotion == "Neutral")
             {
                 return 1;
             }
@@ -117,7 +117,7 @@ namespace FaceReader
             }
             else
             {
-                return "Neutral";
+                return " ";
             }
         }
 
