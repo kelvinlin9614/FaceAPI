@@ -16,6 +16,7 @@ namespace FaceReader
         private string ENDPOINT;
         private IFaceClient client;
         private string RECOGNITION_MODEL4;
+        private string emotion;
        
         public EmotionReader()
         {
@@ -23,6 +24,11 @@ namespace FaceReader
             this.ENDPOINT = "https://randomname.cognitiveservices.azure.com/";
             this.client = Authenticate(this.ENDPOINT, this.SUBSCRIPTION_KEY);
             this.RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
+            this.emotion = "";
+        }
+        public String getEmotion()
+        {
+            return emotion;
         }
 
         private IFaceClient Authenticate(string endpoint, string key)
@@ -149,6 +155,7 @@ namespace FaceReader
             Hashtable hs = new Hashtable();
             //get the average emotion of all the images 
             int mood = FindMostOccuringElement(imageMoods, hs);
+            this.emotion = MoodType(mood);
             Console.WriteLine();
             //print the average emotion of all the images 
             Console.WriteLine("===========================");
@@ -156,63 +163,5 @@ namespace FaceReader
             Console.WriteLine("===========================");
             Console.WriteLine();
         }
-
-
-            //    // Parse and print all attributes of each detected face.
-            //    foreach (var face in detectedFaces)
-            //    {
-            //        Console.WriteLine($"Face attributes for {i}.jpg:");
-            //        // Get bounding box of the faces
-            //        Console.WriteLine($"Rectangle(Left/Top/Width/Height) : " +
-            //            $"{face.FaceRectangle.Left} {face.FaceRectangle.Top} {face.FaceRectangle.Width} {face.FaceRectangle.Height}");
-            //        // Get emotion on the face
-            //        string emotionType = string.Empty;
-            //        double emotionValue = 0.0;
-            //        Emotion emotion = face.FaceAttributes.Emotion;
-            //        if (emotion.Anger > emotionValue) { emotionValue = emotion.Anger; emotionType = "Anger"; }
-            //        if (emotion.Contempt > emotionValue) { emotionValue = emotion.Contempt; emotionType = "Contempt"; }
-            //        if (emotion.Disgust > emotionValue) { emotionValue = emotion.Disgust; emotionType = "Disgust"; }
-            //        if (emotion.Fear > emotionValue) { emotionValue = emotion.Fear; emotionType = "Fear"; }
-            //        if (emotion.Happiness > emotionValue) { emotionValue = emotion.Happiness; emotionType = "Happiness"; }
-            //        if (emotion.Neutral > emotionValue) { emotionValue = emotion.Neutral; emotionType = "Neutral"; }
-            //        if (emotion.Sadness > emotionValue) { emotionValue = emotion.Sadness; emotionType = "Sadness"; }
-            //        if (emotion.Surprise > emotionValue) { emotionType = "Surprise"; }
-            //        Console.WriteLine($"Emotion : {emotionType}");
-            //        Console.WriteLine();
-            //        switch (emotionType)
-            //        {
-            //            case "Anger":
-            //                anger++;
-            //                break;
-            //            case "Contempt":
-            //                contempt++;
-            //                break;
-            //            case "Disgust":
-            //                disgust++;
-            //                break;
-            //            case "Fear":
-            //                fear++;
-            //                break;
-            //            case "Happiness":
-            //                happiness++;
-            //                break;
-            //            case "Neutral":
-            //                neutral++;
-            //                break;
-            //            case "Sadness":
-            //                sadness++;
-            //                break;
-            //            case "Surprise":
-            //                surprise++;
-            //                break;
-            //            default:
-            //                break;
-            //        }
-            //    }
-            //}
-            //Console.WriteLine("===========================");
-            //Console.WriteLine($"Anger: {anger} Contempt: {contempt} Disgust: {disgust} Fear: {fear}");
-            //Console.WriteLine($"Happiness: {happiness} Neutral: {neutral} Sadness: {sadness} Surprise: {surprise}");
-            //Console.WriteLine("===========================");
     }
 }
