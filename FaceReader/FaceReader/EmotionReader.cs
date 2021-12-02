@@ -26,7 +26,7 @@ namespace FaceReader
             this.RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
             this.emotion = "";
         }
-        public String getEmotion()
+        public String GetEmotion()
         {
             return emotion;
         }
