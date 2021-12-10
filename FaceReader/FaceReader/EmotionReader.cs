@@ -107,19 +107,19 @@ namespace FaceReader
         {
             if (emotionLevel == 1)
             {
-                return "Confident";
+                return "Confident\n";
             }
             else if (emotionLevel == 2)
             {
-                return "Sad";
+                return "Anger\n";
             }
             else if (emotionLevel == 3)
             {
-                return "Nervous";
+                return "Nervous\n";
             }
             else if (emotionLevel == 4)
             {
-                return "Angry";
+                return "Sad\n";
             }
             else
             {
