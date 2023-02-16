@@ -20,8 +20,8 @@ namespace FaceReader
        
         public EmotionReader()
         {
-            this.SUBSCRIPTION_KEY = "7a3a8212c72642b5a7b6156cdd13db1c";
-            this.ENDPOINT = "https://randomname.cognitiveservices.azure.com/";
+            this.SUBSCRIPTION_KEY = "";
+            this.ENDPOINT = "";
             this.client = Authenticate(this.ENDPOINT, this.SUBSCRIPTION_KEY);
             this.RECOGNITION_MODEL4 = RecognitionModel.Recognition04;
             this.emotion = "";
